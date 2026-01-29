@@ -121,10 +121,15 @@
       box-shadow: 0 40px 80px rgba(56,189,248,0.25);
     }
 
-    .card img {
-      width: 100%;
-      display: block;
-      filter: saturate(1.2) contrast(1.05);
+    .project-img {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      letter-spacing: 0.5px;
     }
 
     .card-content {
@@ -221,25 +226,75 @@
   <section id="about">
     <h2>About Me</h2>
     <p style="max-width:900px;margin:auto;text-align:center;color:#9ca3af;font-size:1.05rem;">
-      I am a <strong>Data Analyst and aspiring AI Engineer</strong> with a strong foundation in
-      <strong>data analysis, business intelligence, and machine learning</strong>. I specialize in
-      transforming complex datasets into clear, visually compelling insights using tools like
-      <strong>Power BI, SQL, and Python</strong>. My goal is to help businesses make smarter,
-      data-driven decisions through impactful dashboards and analytical solutions.
+      I am a <strong>Data Analyst</strong> transitioning from a strong background in
+      <strong>software engineering and information systems</strong>. I have hands-on experience in
+      <strong>data modeling, SQL, Python, reporting, and business intelligence</strong>, with a proven
+      ability to translate business requirements into clear, data-driven insights. I enjoy
+      building impactful dashboards, analyzing trends, and supporting decision-making through
+      high-quality data solutions.
     </p>
   </section>
 
   <!-- EDUCATION -->
   <section id="education">
     <h2>Education</h2>
-    <div style="max-width:900px;margin:auto;text-align:center;">
-      <h3 style="margin-bottom:5px;">Bachelor’s Degree</h3>
-      <p style="color:#9ca3af;margin-top:0;">
-        Completed in <strong>2025</strong><br>
-        Focused on data analysis, databases, and analytical problem-solving
-      </p>
+    <div style="max-width:900px;margin:auto;">
+      <div style="margin-bottom:30px;">
+        <h3>Master of Information Systems</h3>
+        <p style="color:#9ca3af; margin-top:5px;">King’s Own Institute, Australia | 2023 – 2025</p>
+      </div>
+      <div>
+        <h3>Bachelor of Software Engineering</h3>
+        <p style="color:#9ca3af; margin-top:5px;">University of Karachi, Pakistan | 2014 – 2018</p>
+      </div>
     </div>
   </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2>Professional Experience</h2>
+    <div style="max-width:1000px;margin:auto;">
+
+      <h3>IT Assistant — Unity Grammar (Australia)</h3>
+      <p style="color:#9ca3af;">September 2023</p>
+      <ul>
+        <li>Created and maintained structured databases for student assets and inventory.</li>
+        <li>Generated analytical reports to support administrative decision-making.</li>
+      </ul>
+
+      <h3>Senior Software Engineer — Techlogix (Pakistan)</h3>
+      <p style="color:#9ca3af;">April 2021 – July 2023</p>
+      <ul>
+        <li>Supported data-driven features by working with backend systems and relational databases.</li>
+        <li>Performed data modeling and structured data handling to enable reporting requirements.</li>
+        <li>Improved data reliability through optimized data processing workflows.</li>
+      </ul>
+
+      <h3>Analyst Programmer — Centegy Technologies (Pakistan)</h3>
+      <p style="color:#9ca3af;">November 2021 – April 2022</p>
+      <ul>
+        <li>Analyzed application data and workflows to support business and technical requirements.</li>
+        <li>Extracted and structured data from relational databases for reporting and analysis.</li>
+      </ul>
+
+      <h3>Junior iOS Developer — Arpatech (Pakistan)</h3>
+      <p style="color:#9ca3af;">January 2020 – November 2021</p>
+      <ul>
+        <li>Worked on financial and operational applications requiring accurate data handling.</li>
+        <li>Assisted in analyzing system and user data to improve application functionality.</li>
+      </ul>
+
+      <h3>Junior Web Developer — Chase Department Store (Pakistan)</h3>
+      <p style="color:#9ca3af;">December 2017 – November 2019</p>
+      <ul>
+        <li>Developed and maintained an e-commerce platform using Magento.</li>
+        <li>Implemented order tracking systems to streamline logistics and fulfillment processes.</li>
+      </ul>
+
+    </div>
+  </section>
+
+  
 
   <!-- PROJECTS -->
   <section id="projects">
@@ -249,7 +304,7 @@
 
       <!-- Project 1 -->
       <div class="card">
-        <img src="https://via.placeholder.com/800x500/0ea5e9/020617?text=Sales+Dashboard" alt="Power BI Sales Dashboard">
+        <div class="project-img" style="background:linear-gradient(135deg,#0ea5e9,#020617);">Sales Dashboard</div>
         <div class="card-content">
           <h3>Global Sales Performance</h3>
           <p>Interactive Power BI dashboard analyzing revenue, profit margins, and regional growth trends.</p>
@@ -259,7 +314,7 @@
 
       <!-- Project 2 -->
       <div class="card">
-        <img src="https://via.placeholder.com/800x500/a855f7/020617?text=E-commerce+Analytics" alt="Power BI E-commerce Dashboard">
+        <div class="project-img" style="background:linear-gradient(135deg,#a855f7,#020617);">E-commerce Analytics</div>
         <div class="card-content">
           <h3>E-commerce Analytics</h3>
           <p>Customer behavior, conversion funnels, and product-level insights for e-commerce optimization.</p>
@@ -269,7 +324,7 @@
 
       <!-- Project 3 -->
       <div class="card">
-        <img src="https://via.placeholder.com/800x500/22d3ee/020617?text=Finance+Insights" alt="Power BI Finance Dashboard">
+        <div class="project-img" style="background:linear-gradient(135deg,#22d3ee,#020617);">Finance Insights</div>
         <div class="card-content">
           <h3>Financial Insights</h3>
           <p>Profit & loss analysis, cost optimization, and KPI tracking using advanced DAX measures.</p>
