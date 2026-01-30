@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hamza Mustafa | Power BI Portfolio</title>
+  <title>Hamza Mustafa | Data Analyst & Power BI Portfolio</title>
 
   <style>
     :root {
@@ -14,16 +14,23 @@
       --muted: #9ca3af;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: radial-gradient(circle at top, #0f172a, #020617);
       color: var(--text);
+      line-height: 1.6;
     }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2, h3 { margin-bottom: 15px; }
 
     h2 {
       text-align: center;
@@ -31,13 +38,46 @@
       margin-bottom: 50px;
     }
 
-    /* ===== PROJECTS ===== */
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
+    p { color: var(--muted); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 20px auto;
+      font-size: 1.1rem;
+    }
+
+    /* ===== ABOUT / EDUCATION / EXPERIENCE ===== */
+    .content {
+      max-width: 900px;
       margin: auto;
     }
 
+    .experience h3 {
+      margin-top: 30px;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    /* ===== PROJECTS ===== */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -52,7 +92,6 @@
       box-shadow: 0 20px 50px rgba(0,0,0,0.6);
       cursor: pointer;
 
-      /* scroll animation */
       opacity: 0;
       transform: translateY(40px);
       transition: all 0.8s ease;
@@ -63,7 +102,6 @@
       transform: translateY(0);
     }
 
-    /* KPI badge */
     .kpi {
       position: absolute;
       top: 14px;
@@ -83,11 +121,10 @@
       100% { transform: scale(1); }
     }
 
-    /* ===== IMAGE FIX ===== */
     .project img {
       width: 100%;
-      aspect-ratio: 1 / 1;       /* square */
-      object-fit: contain;       /* full image visible */
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
       background: #020617;
       padding: 14px;
       transition: transform 0.4s ease;
@@ -101,15 +138,6 @@
       padding: 20px;
     }
 
-    .card-content h3 {
-      margin: 0 0 10px;
-    }
-
-    .card-content p {
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
     .tag {
       display: inline-block;
       margin-top: 10px;
@@ -120,14 +148,13 @@
       color: var(--accent);
     }
 
-    /* ===== IMAGE MODAL ===== */
+    /* ===== MODAL ===== */
     .img-modal {
       display: none;
       position: fixed;
       inset: 0;
       background: rgba(2, 6, 23, 0.75);
       backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       z-index: 1000;
       align-items: center;
       justify-content: center;
@@ -152,109 +179,166 @@
       top: 25px;
       right: 35px;
       font-size: 2.5rem;
-      color: var(--text);
       cursor: pointer;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
   </style>
 </head>
 
 <body>
 
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Hamza Mustafa</h1>
+    <p>Data Analyst | Power BI Specialist | Turning data into business insights</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <h2>About Me</h2>
+  <div class="content">
+    <p>
+      I am a Data Analyst transitioning from a strong background in software engineering
+      and information systems. I specialize in SQL, Python, Power BI, and data modeling,
+      with a passion for creating clear, decision-ready dashboards.
+    </p>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section>
+  <h2>Education</h2>
+  <div class="content">
+    <h3>Master of Information Systems</h3>
+    <p>King’s Own Institute, Australia (2023 – 2025)</p>
+
+    <h3>Bachelor of Software Engineering</h3>
+    <p>University of Karachi, Pakistan (2014 – 2018)</p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience">
+  <h2>Professional Experience</h2>
+  <div class="content">
+    <h3>IT Assistant — Unity Grammar (Australia)</h3>
+    <ul>
+      <li>Maintained structured databases and inventory systems</li>
+      <li>Generated reports for administrative decision-making</li>
+    </ul>
+
+    <h3>Senior Software Engineer — Techlogix</h3>
+    <ul>
+      <li>Worked with relational databases and data-driven features</li>
+      <li>Improved reporting accuracy through optimized data handling</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROJECTS -->
 <section id="projects">
   <h2>Power BI Projects</h2>
 
   <div class="grid">
-
-    <!-- PROJECT 1 -->
     <div class="card project">
       <div class="kpi">⬆ Revenue<br><strong>+18%</strong></div>
-      <img src="image1.webp" alt="Retail Supply Chain Sales Dashboard">
+      <img src="image1.webp">
       <div class="card-content">
         <h3>Retail Supply Chain & Sales Analysis</h3>
-        <p>
-          Advanced Power BI dashboard analyzing revenue, cost, profit, orders,
-          quantity sold, and delivery performance across regions and subcategories.
-        </p>
+        <p>Revenue, cost, profit, orders, and delivery performance analysis.</p>
         <span class="tag">Power BI</span>
       </div>
     </div>
 
-    <!-- PROJECT 2 -->
     <div class="card project">
       <div class="kpi">📦 Orders<br><strong>22K</strong></div>
-      <img src="image2.jpg" alt="Super Store Sales Dashboard">
+      <img src="image2.jpg">
       <div class="card-content">
         <h3>Super Store Sales Dashboard</h3>
-        <p>
-          Comprehensive sales performance dashboard covering region-wise sales,
-          profit trends, ship modes, and category-level insights.
-        </p>
+        <p>Region-wise sales, profit trends, and category insights.</p>
         <span class="tag">Data Analytics</span>
       </div>
     </div>
 
-    <!-- PROJECT 3 -->
     <div class="card project">
       <div class="kpi">💰 Profit<br><strong>37K</strong></div>
-      <img src="image3.png" alt="Odin E-commerce Sales Dashboard">
+      <img src="image3.png">
       <div class="card-content">
         <h3>E-commerce Sales & Profit Analysis</h3>
-        <p>
-          Interactive Power BI dashboard analyzing e-commerce sales, profit by month,
-          category performance, payment modes, and customer trends.
-        </p>
+        <p>Sales, profit by month, payment modes, and customer trends.</p>
         <span class="tag">Business Intelligence</span>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- IMAGE MODAL -->
+<!-- CONTACT -->
+<section class="contact">
+  <h2>Contact Me</h2>
+  <p style="text-align:center;">
+    📧 <a href="mailto:hamza.appdeveloper@gmail.com">hamza.appdeveloper@gmail.com</a><br><br>
+    🔗 <a href="https://www.linkedin.com/in/hamza-mustafa786/">LinkedIn</a> |
+    💻 <a href="https://github.com/Hamza-Mustafa">GitHub</a> |
+    📸 <a href="https://www.instagram.com/appshap">Instagram</a>
+  </p>
+</section>
+
+<footer>
+  © 2026 Hamza Mustafa · Data Analytics · Power BI
+</footer>
+
+<!-- MODAL -->
 <div class="img-modal" id="imgModal">
   <span class="img-close">&times;</span>
   <img id="imgModalContent">
 </div>
 
 <script>
-  /* Scroll-in animation */
+  /* Scroll animation */
   const cards = document.querySelectorAll('.card');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
     });
-  }, { threshold: 0.2 });
-
+  });
   cards.forEach(card => observer.observe(card));
 
-  /* Image modal logic */
+  /* Image modal */
   const modal = document.getElementById("imgModal");
   const modalImg = document.getElementById("imgModalContent");
-  const closeBtn = document.querySelector(".img-close");
-
   document.querySelectorAll(".project img").forEach(img => {
-    img.addEventListener("click", () => {
+    img.onclick = () => {
       modal.style.display = "flex";
       modal.classList.add("show");
       modalImg.src = img.src;
-    });
+    };
   });
 
-  closeBtn.onclick = closeModal;
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeModal();
-  });
+  document.querySelector(".img-close").onclick = closeModal;
+  modal.onclick = e => { if (e.target === modal) closeModal(); };
+  document.onkeydown = e => { if (e.key === "Escape") closeModal(); };
 
   function closeModal() {
     modal.classList.remove("show");
-    setTimeout(() => {
-      modal.style.display = "none";
-    }, 300);
+    setTimeout(() => modal.style.display = "none", 300);
   }
 </script>
 
