@@ -731,6 +731,86 @@
       text-align: center;
     }
 
+        .journey-container {
+      position: relative;
+      max-width: 900px;
+      margin: auto;
+      padding-top: 40px;
+    }
+    
+    .journey-path {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 300px;
+      height: 100%;
+      transform: translateX(-50%);
+      stroke: var(--accent);
+      stroke-width: 4;
+      fill: none;
+      opacity: 0.35;
+      filter: drop-shadow(0 0 10px var(--accent));
+    }
+    
+    .journey-dot {
+      position: absolute;
+      left: 50%;
+      width: 18px;
+      height: 18px;
+      background: var(--accent2);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      animation: moveAlongPath 12s linear infinite;
+      box-shadow: 0 0 12px var(--accent2);
+    }
+    
+    @keyframes moveAlongPath {
+      0%   { offset-distance: 0%; }
+      100% { offset-distance: 100%; }
+    }
+    
+    .journey-dot {
+      offset-path: path("M250 0 
+                         C150 200, 350 400, 250 600 
+                         C150 800, 350 1000, 250 1200 
+                         C150 1350, 350 1500, 250 1700");
+    }
+    
+    .journey-item {
+      position: relative;
+      margin: 120px 0;
+      padding: 20px 25px;
+      background: rgba(15,23,42,0.6);
+      border-radius: 16px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease;
+    }
+    
+    .journey-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .journey-item:nth-child(odd) {
+      transform: translateX(-40px);
+    }
+    
+    .journey-item:nth-child(even) {
+      transform: translateX(40px);
+    }
+    
+    .journey-item.visible:nth-child(odd),
+    .journey-item.visible:nth-child(even) {
+      transform: translateX(0);
+    }
+    
+    .journey-item h3 {
+      margin-top: 0;
+    }
+
   </style>
 </head>
 
@@ -813,48 +893,71 @@
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience">
-    <h2>Professional Experience</h2>
-    <div style="max-width:1000px;margin:auto;">
+<section id="experience">
+  <h2>Professional Experience</h2>
 
+  <div class="journey-container">
+
+    <!-- Curved Path -->
+    <svg class="journey-path" viewBox="0 0 500 1500" preserveAspectRatio="none">
+      <path d="M250 0 
+               C150 200, 350 400, 250 600 
+               C150 800, 350 1000, 250 1200 
+               C150 1350, 350 1500, 250 1700" />
+    </svg>
+
+    <!-- Animated Dot -->
+    <div class="journey-dot"></div>
+
+    <!-- Experience Items -->
+    <div class="journey-item">
       <h3>IT Assistant — Unity Grammar (Australia)</h3>
-      <p style="color:#9ca3af;">September 2023</p>
+      <p>September 2023</p>
       <ul>
         <li>Created and maintained structured databases for student assets and inventory.</li>
         <li>Generated analytical reports to support administrative decision-making.</li>
       </ul>
+    </div>
 
+    <div class="journey-item">
       <h3>Senior Software Engineer — Techlogix (Pakistan)</h3>
-      <p style="color:#9ca3af;">April 2021 – July 2023</p>
+      <p>April 2021 – July 2023</p>
       <ul>
         <li>Supported data-driven features by working with backend systems and relational databases.</li>
         <li>Performed data modeling and structured data handling to enable reporting requirements.</li>
         <li>Improved data reliability through optimized data processing workflows.</li>
       </ul>
+    </div>
 
+    <div class="journey-item">
       <h3>Analyst Programmer — Centegy Technologies (Pakistan)</h3>
-      <p style="color:#9ca3af;">November 2021 – April 2022</p>
+      <p>November 2021 – April 2022</p>
       <ul>
         <li>Analyzed application data and workflows to support business and technical requirements.</li>
         <li>Extracted and structured data from relational databases for reporting and analysis.</li>
       </ul>
+    </div>
 
+    <div class="journey-item">
       <h3>Junior iOS Developer — Arpatech (Pakistan)</h3>
-      <p style="color:#9ca3af;">January 2020 – November 2021</p>
+      <p>January 2020 – November 2021</p>
       <ul>
         <li>Worked on financial and operational applications requiring accurate data handling.</li>
         <li>Assisted in analyzing system and user data to improve application functionality.</li>
       </ul>
+    </div>
 
+    <div class="journey-item">
       <h3>Junior Web Developer — Chase Department Store (Pakistan)</h3>
-      <p style="color:#9ca3af;">December 2017 – November 2019</p>
+      <p>December 2017 – November 2019</p>
       <ul>
         <li>Developed and maintained an e-commerce platform using Magento.</li>
         <li>Implemented order tracking systems to streamline logistics and fulfillment processes.</li>
       </ul>
-
     </div>
-  </section>
+
+  </div>
+</section>
 
   <!-- PROJECTS -->
   <section id="projects">
@@ -1141,11 +1244,23 @@ function animateParticles() {
 }
 
 animateParticles();
+
+
+    const journeyItems = document.querySelectorAll('.journey-item');
+
+const journeyObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.3 });
+
+journeyItems.forEach(item => journeyObserver.observe(item));
     
   </script>
 
 </body>
 </html>
+
 
 
 
