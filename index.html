@@ -483,6 +483,21 @@
       font-size: 0.9rem;
     }
 
+    .footer-accent-line {
+  position: relative;
+}
+
+.footer-accent-line::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  filter: blur(12px);
+  opacity: 0.35;
+  animation: footerGlow 4s linear infinite;
+  border-radius: 999px;
+}
+
     /* PREMIUM FOOTER */
 .premium-footer {
   position: relative;
@@ -1122,6 +1137,7 @@ animateParticles();
 
 </body>
 </html>
+
 
 
 
