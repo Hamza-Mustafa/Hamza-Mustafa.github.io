@@ -4,7 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hamza Mustafa | Data Analytics Portfolio</title>
-  <meta name="description" content="Power BI & Data Analytics Portfolio of Hamza Mustafa" />
+  <meta name="description" content="Power BI dashboards, data analytics projects, and business intelligence portfolio by Hamza Mustafa." />
+
+  <!-- SEO & Social -->
+  <meta property="og:title" content="Hamza Mustafa | Data Analytics Portfolio" />
+  <meta property="og:description" content="Power BI dashboards, data analytics projects, and business intelligence portfolio by Hamza Mustafa." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-domain-or-github-pages-url.com" />
+  <meta property="og:image" content="https://your-domain-or-github-pages-url.com/preview.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hamza Mustafa | Data Analytics Portfolio" />
+  <meta name="twitter:description" content="Power BI dashboards, data analytics projects, and business intelligence portfolio by Hamza Mustafa." />
+  <meta name="twitter:image" content="https://your-domain-or-github-pages-url.com/preview.png" />
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -16,6 +28,7 @@
       --accent2: #a855f7;
       --text: #e5e7eb;
       --muted: #9ca3af;
+      --nav-height: 64px;
     }
 
     html { scroll-behavior: smooth; }
@@ -29,6 +42,32 @@
       overflow-x: hidden;
     }
 
+    /* LOADER */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, #020617, #000);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .loader-inner {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 3px solid rgba(56,189,248,0.2);
+      border-top-color: var(--accent);
+      border-right-color: var(--accent2);
+      animation: spin 0.8s linear infinite;
+      box-shadow: 0 0 25px rgba(56,189,248,0.5);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
     /* NAVBAR */
     .navbar {
       position: sticky;
@@ -36,39 +75,159 @@
       z-index: 999;
       backdrop-filter: blur(12px);
       background: rgba(2, 6, 23, 0.6);
-      padding: 14px 30px;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
+    .nav-left {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
     .navbar a {
-      margin-left: 20px;
       font-size: 0.95rem;
       color: var(--text);
+      position: relative;
+      padding-bottom: 2px;
       transition: color 0.3s ease;
+    }
+
+    .navbar a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 0.3s ease;
+      border-radius: 999px;
+    }
+
+    .navbar a:hover::after {
+      width: 100%;
     }
 
     .navbar a:hover { color: var(--accent); }
 
+    .navbar a.active {
+      color: var(--accent);
+    }
+
+    .navbar a.active::after {
+      width: 100%;
+    }
+
     #themeToggle {
-      margin-left: 20px;
       background: none;
       border: none;
       font-size: 1.2rem;
       cursor: pointer;
       color: var(--text);
+      transition: transform 0.2s ease;
+    }
+
+    #themeToggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* HAMBURGER & MOBILE MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 20px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 999px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -260px;
+      width: 260px;
+      height: 100vh;
+      background: rgba(15,23,42,0.98);
+      backdrop-filter: blur(16px);
+      box-shadow: -10px 0 40px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      padding: 80px 24px 24px;
+      gap: 18px;
+      z-index: 1500;
+      transition: right 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      right: 0;
+    }
+
+    .mobile-menu a {
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--accent);
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1400;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* HERO */
     .hero {
-      min-height: 100vh;
+      min-height: calc(100vh - var(--nav-height));
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      will-change: transform;
+      transition: transform 0.2s ease-out;
     }
 
     .hero h1 {
@@ -87,6 +246,8 @@
     }
 
     .hero a {
+      position: relative;
+      overflow: hidden;
       display: inline-block;
       padding: 14px 32px;
       border-radius: 40px;
@@ -98,9 +259,22 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
+    .hero a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.4), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
     .hero a:hover {
       transform: translateY(-4px) scale(1.03);
       box-shadow: 0 0 60px rgba(168,85,247,0.6);
+    }
+
+    .hero a:active::after {
+      opacity: 1;
     }
 
     /* SECTIONS */
@@ -141,7 +315,7 @@
       position: relative;
       box-shadow: 0 20px 60px rgba(0,0,0,0.6);
       transform-style: preserve-3d;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.3s ease;
 
       opacity: 0;
       transform: translateY(40px);
@@ -205,6 +379,39 @@
       font-size: 0.75rem;
       background: rgba(56,189,248,0.15);
       color: var(--accent);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .tag:hover {
+      box-shadow: 0 0 18px rgba(56,189,248,0.5);
+      transform: translateY(-2px);
+    }
+
+    /* PROJECT CTAs */
+    .project-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .project-ctas a {
+      font-size: 0.8rem;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      color: var(--text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    }
+
+    .project-ctas a:hover {
+      background: rgba(56,189,248,0.12);
+      border-color: var(--accent);
+      transform: translateY(-1px);
     }
 
     /* BLOBS */
@@ -214,6 +421,7 @@
       filter: blur(80px);
       opacity: 0.35;
       animation: float 12s infinite alternate;
+      pointer-events: none;
     }
 
     .blob.one {
@@ -280,13 +488,17 @@
 
     /* LIGHT MODE */
     .light-mode {
-      --bg: #f5f5f5;
+      --bg: linear-gradient(180deg, #f9fafb, #e5f0ff);
       --card: #ffffff;
       --text: #111;
       --muted: #444;
       --accent: #2563eb;
       --accent2: #9333ea;
       background: #f5f5f5;
+    }
+
+    .light-mode body {
+      background: var(--bg);
     }
 
     .light-mode .navbar {
@@ -321,6 +533,56 @@
       color: #2563eb;
     }
 
+    .light-mode .blob.one {
+      background: rgba(96,165,250,0.9);
+    }
+
+    .light-mode .blob.two {
+      background: rgba(196,181,253,0.9);
+    }
+
+    .light-mode .hero {
+      background: linear-gradient(180deg, #f9fafb, #e0f2fe);
+    }
+
+    /* SCROLL TO TOP */
+    #scrollTopBtn {
+      position: fixed;
+      right: 20px;
+      bottom: 24px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(15,23,42,0.9);
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+      z-index: 1200;
+    }
+
+    #scrollTopBtn.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    #scrollTopBtn:hover {
+      background: rgba(37,99,235,0.95);
+      transform: translateY(-2px);
+    }
+
+    .light-mode #scrollTopBtn {
+      background: rgba(15,23,42,0.9);
+      color: #f9fafb;
+    }
+
     /* ANIMATIONS */
     @keyframes glow {
       from { text-shadow: 0 0 20px rgba(56,189,248,0.4); }
@@ -331,31 +593,73 @@
       from { transform: translateY(0px); }
       to { transform: translateY(60px); }
     }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-right {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      section {
+        padding: 60px 16px;
+      }
+
+      .hero {
+        padding: 40px 16px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-inner"></div>
+  </div>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-left">Hamza Mustafa</div>
     <div class="nav-right">
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-link="about">About</a>
+      <a href="#education" data-link="education">Education</a>
+      <a href="#experience" data-link="experience">Experience</a>
+      <a href="#projects" data-link="projects">Projects</a>
+      <a href="#contact" data-link="contact">Contact</a>
       <button id="themeToggle">🌙</button>
     </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <span class="mobile-menu-close" id="mobileClose">&times;</span>
+    <a href="#about" data-link="about">About</a>
+    <a href="#education" data-link="education">Education</a>
+    <a href="#experience" data-link="experience">Experience</a>
+    <a href="#projects" data-link="projects">Projects</a>
+    <a href="#contact" data-link="contact">Contact</a>
+  </div>
 
   <!-- BLOBS -->
   <div class="blob one"></div>
   <div class="blob two"></div>
 
   <!-- HERO -->
-  <section class="hero">
-    <div>
+  <section class="hero" id="hero">
+    <div class="hero-inner">
       <h1>Hamza Mustafa</h1>
       <p>
         Data Analyst & Aspiring AI Engineer crafting <strong>beautiful Power BI dashboards</strong>,
@@ -449,6 +753,11 @@
             supply-chain optimization and executive decision-making.
           </p>
           <span class="tag">Power BI</span>
+          <div class="project-ctas">
+            <a href="#"><span>📊</span>View Dashboard</a>
+            <a href="#"><span>📄</span>Case Study</a>
+            <a href="#"><span>⬇</span>Download PDF</a>
+          </div>
         </div>
       </div>
 
@@ -463,6 +772,11 @@
             teams identify growth opportunities and reduce operational inefficiencies.
           </p>
           <span class="tag">Data Analytics</span>
+          <div class="project-ctas">
+            <a href="#"><span>📊</span>View Dashboard</a>
+            <a href="#"><span>📄</span>Case Study</a>
+            <a href="#"><span>⬇</span>Download PDF</a>
+          </div>
         </div>
       </div>
 
@@ -477,6 +791,11 @@
             and inventory decisions.
           </p>
           <span class="tag">Business Intelligence</span>
+          <div class="project-ctas">
+            <a href="#"><span>📊</span>View Dashboard</a>
+            <a href="#"><span>📄</span>Case Study</a>
+            <a href="#"><span>⬇</span>Download PDF</a>
+          </div>
         </div>
       </div>
 
@@ -509,17 +828,28 @@
     © 2026 Hamza Mustafa · Power BI · Data Analytics · GitHub Pages
   </footer>
 
+  <!-- SCROLL TO TOP -->
+  <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
+
   <!-- JS -->
   <script>
-    // Fade-in scroll animation
+    // LOADER
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      setTimeout(() => {
+        if (loader) loader.style.display = 'none';
+      }, 800);
+    });
+
+    // Fade-in scroll animation for cards
     const cards = document.querySelectorAll('.card');
-    const observer = new IntersectionObserver(entries => {
+    const cardObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.2 });
 
-    cards.forEach(card => observer.observe(card));
+    cards.forEach(card => cardObserver.observe(card));
 
     // Image modal
     const modal = document.getElementById("imgModal");
@@ -551,13 +881,94 @@
       if (e.key === "Escape") closeModal();
     });
 
-    // Theme toggle (null-safe)
+    // Theme toggle
     const toggleBtn = document.getElementById("themeToggle");
     if (toggleBtn) {
       toggleBtn.addEventListener("click", () => {
         document.body.classList.toggle("light-mode");
         const light = document.body.classList.contains("light-mode");
         toggleBtn.textContent = light ? "🌙" : "☀️";
+      });
+    }
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      mobileOverlay.classList.add('show');
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      mobileOverlay.classList.remove('show');
+    }
+
+    if (hamburger) {
+      hamburger.addEventListener('click', openMobileMenu);
+    }
+    if (mobileClose) {
+      mobileClose.addEventListener('click', closeMobileMenu);
+    }
+    if (mobileOverlay) {
+      mobileOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Active navbar highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar a[data-link], .mobile-menu a[data-link]');
+
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            if (link.getAttribute('data-link') === id) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Hero parallax
+    const hero = document.getElementById('hero');
+    const heroInner = document.querySelector('.hero-inner');
+    if (hero && heroInner) {
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        heroInner.style.transform = `translate3d(${x * 12}px, ${y * 8}px, 0)`;
+      });
+
+      hero.addEventListener('mouseleave', () => {
+        heroInner.style.transform = 'translate3d(0,0,0)';
       });
     }
   </script>
