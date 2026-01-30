@@ -726,9 +726,7 @@
     z-index: 0;
     }
     
-    #education div{
-      text-align: center;
-    }
+   
 
 .experience-wrapper {
   max-width: 900px;
@@ -758,6 +756,60 @@
   color: var(--muted);
   margin-top: -8px;
   margin-bottom: 12px;
+}
+
+
+    .edu-badges {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.edu-badge {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(15,23,42,0.55);
+  padding: 25px 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.7s ease;
+}
+
+.edu-badge.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.edu-badge:hover {
+  box-shadow: 0 0 25px rgba(56,189,248,0.35);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.edu-school {
+  color: var(--muted);
+  margin: 6px 0;
+}
+
+.edu-date {
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .edu-badge {
+    max-width: 100%;
+  }
 }
     
   </style>
@@ -831,15 +883,24 @@
 
   <!-- EDUCATION -->
   <section id="education">
-    <h2>Education</h2>
-    <div style="max-width:900px;margin:auto;">
-      <h3>Master of Information Systems</h3>
-      <p style="color:#9ca3af;">King’s Own Institute, Australia | 2023 – 2025</p>
+  <h2>Education</h2>
 
-      <h3>Bachelor of Software Engineering</h3>
-      <p style="color:#9ca3af;">University of Karachi, Pakistan | 2014 – 2018</p>
+  <div class="edu-badges">
+
+    <div class="edu-badge">
+      <h3>Master of Information Systems</h3>
+      <p class="edu-school">King’s Own Institute, Australia</p>
+      <p class="edu-date">2023 – 2025</p>
     </div>
-  </section>
+
+    <div class="edu-badge">
+      <h3>Bachelor of Software Engineering</h3>
+      <p class="edu-school">University of Karachi, Pakistan</p>
+      <p class="edu-date">2014 – 2018</p>
+    </div>
+
+  </div>
+</section>
 
   <!-- EXPERIENCE -->
 <section id="experience">
@@ -1184,20 +1245,28 @@ animateParticles();
 
 
 const expItems = document.querySelectorAll('.exp-item');
-
 const expObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.3 });
-
 expItems.forEach(item => expObserver.observe(item));
+
+
+const eduBadges = document.querySelectorAll('.edu-badge');
+const eduBadgeObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.3 });
+eduBadges.forEach(badge => eduBadgeObserver.observe(badge));
     
     
   </script>
 
 </body>
 </html>
+
 
 
 
