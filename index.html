@@ -260,8 +260,64 @@
       from { transform: translateY(0px); }
       to { transform: translateY(60px); }
     }
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+  background: rgba(2, 6, 23, 0.6);
+  padding: 14px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.navbar a {
+  margin-left: 20px;
+  font-size: 0.95rem;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: var(--accent);
+}
+
+#themeToggle {
+  margin-left: 20px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+    .light-mode {
+  --bg: #f5f5f5;
+  --card: #ffffff;
+  --text: #111;
+  --muted: #444;
+  --accent: #2563eb;
+  --accent2: #9333ea;
+  background: #f5f5f5;
+}
+    
   </style>
 </head>
+
+<nav class="navbar">
+  <div class="nav-left">Hamza Mustafa</div>
+  <div class="nav-right">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <button id="themeToggle">🌙</button>
+  </div>
+</nav>
 
 <body>
 
@@ -452,7 +508,16 @@
       modal.classList.remove("show");
       setTimeout(() => modal.style.display = "none", 300);
     }
+
+const toggleBtn = document.getElementById("themeToggle");
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+  toggleBtn.textContent = document.body.classList.contains("light-mode") ? "🌙" : "☀️";
+});
+    
   </script>
 
 </body>
 </html>
+
