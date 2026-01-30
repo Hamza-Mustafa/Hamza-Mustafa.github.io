@@ -772,8 +772,8 @@
   width: 100%;
   max-width: 600px;
   background: rgba(15,23,42,0.55);
-  padding: 25px 30px;
-  border-radius: 20px;
+  padding: 30px 35px;
+  border-radius: 22px;
   backdrop-filter: blur(6px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
   border: 1px solid rgba(255,255,255,0.08);
@@ -791,7 +791,14 @@
 
 .edu-badge:hover {
   box-shadow: 0 0 25px rgba(56,189,248,0.35);
-  transform: translateY(-4px) scale(1.02);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.edu-icon {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(56,189,248,0.5);
 }
 
 .edu-school {
@@ -882,18 +889,20 @@
   </section>
 
   <!-- EDUCATION -->
-  <section id="education">
+<section id="education">
   <h2>Education</h2>
 
   <div class="edu-badges">
 
     <div class="edu-badge">
+      <div class="edu-icon">🎓</div>
       <h3>Master of Information Systems</h3>
       <p class="edu-school">King’s Own Institute, Australia</p>
       <p class="edu-date">2023 – 2025</p>
     </div>
 
     <div class="edu-badge">
+      <div class="edu-icon">📘</div>
       <h3>Bachelor of Software Engineering</h3>
       <p class="edu-school">University of Karachi, Pakistan</p>
       <p class="edu-date">2014 – 2018</p>
@@ -1252,7 +1261,6 @@ const expObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.3 });
 expItems.forEach(item => expObserver.observe(item));
 
-
 const eduBadges = document.querySelectorAll('.edu-badge');
 const eduBadgeObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -1261,11 +1269,11 @@ const eduBadgeObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.3 });
 eduBadges.forEach(badge => eduBadgeObserver.observe(badge));
     
-    
   </script>
 
 </body>
 </html>
+
 
 
 
