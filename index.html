@@ -725,76 +725,10 @@
     pointer-events: none;
     z-index: 0;
     }
-
-    .journey-container {
-  position: relative;
-  max-width: 900px;
-  margin: auto;
-  padding-top: 40px;
-}
-
-.journey-path {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  transform: translateX(-50%);
-  stroke: var(--accent);
-  stroke-width: 4;
-  fill: none;
-  opacity: 0.35;
-  filter: drop-shadow(0 0 10px var(--accent));
-}
-
-.journey-dot {
-  position: absolute;
-  left: 50%;
-  width: 18px;
-  height: 18px;
-  background: var(--accent2);
-  border-radius: 50%;
-  transform: translateX(-50%);
-  animation: moveAlongPath 12s linear infinite;
-  box-shadow: 0 0 12px var(--accent2);
-}
-
-.journey-dot {
-  offset-path: path("M250 0 
-                     C150 200, 350 400, 250 600 
-                     C150 800, 350 1000, 250 1200 
-                     C150 1400, 350 1600, 250 1800");
-}
-
-@keyframes moveAlongPath {
-  0%   { offset-distance: 0%; }
-  100% { offset-distance: 100%; }
-}
-
-.journey-item {
-  position: relative;
-  margin: 120px 0;
-  padding: 20px 25px;
-  background: rgba(15,23,42,0.6);
-  border-radius: 16px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.7s ease;
-}
-
-.journey-item.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
     
     #education div{
       text-align: center;
     }
-
-   
-
   </style>
 </head>
 
@@ -1229,21 +1163,12 @@ function animateParticles() {
 
 animateParticles();
 
-
-    const journeyItems = document.querySelectorAll('.journey-item');
-
-const journeyObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.3 });
-
-journeyItems.forEach(item => journeyObserver.observe(item));
     
   </script>
 
 </body>
 </html>
+
 
 
 
