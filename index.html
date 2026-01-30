@@ -10,7 +10,7 @@
 
   <style>
     :root {
-      --bg: #0b0f19;
+      --bg: radial-gradient(circle at top, #111827, #020617);
       --card: #111827;
       --accent: #38bdf8;
       --accent2: #a855f7;
@@ -24,7 +24,7 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617);
+      background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
     }
@@ -500,4 +500,67 @@
     </p>
     <p style="text-align:center;">
       🔗 <a href="https://www.linkedin.com/in/hamza-mustafa786/" target="_blank">LinkedIn</a> |
-      💻 <a href="https://github.com/Hamza-Mustafa" target="_
+      💻 <a href="https://github.com/Hamza-Mustafa" target="_blank">GitHub</a> |
+      📸 <a href="https://www.instagram.com/appshap" target="_blank">Instagram</a>
+    </p>
+  </section>
+
+  <footer>
+    © 2026 Hamza Mustafa · Power BI · Data Analytics · GitHub Pages
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Fade-in scroll animation
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+
+    // Image modal
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("imgModalContent");
+    const closeBtn = document.querySelector(".img-close");
+
+    document.querySelectorAll(".project img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modal.classList.add("show");
+        modalImg.src = img.src;
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove("show");
+      setTimeout(() => { modal.style.display = "none"; }, 300);
+    }
+
+    if (closeBtn) {
+      closeBtn.onclick = closeModal;
+    }
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    // Theme toggle (null-safe)
+    const toggleBtn = document.getElementById("themeToggle");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
+        const light = document.body.classList.contains("light-mode");
+        toggleBtn.textContent = light ? "🌙" : "☀️";
+      });
+    }
+  </script>
+
+</body>
+</html>
