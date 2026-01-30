@@ -2,14 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hamza Mustafa | Data Analyst & Power BI Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamza Mustafa | Data Analytics Portfolio</title>
+  <meta name="description" content="Power BI & Data Analytics Portfolio of Hamza Mustafa" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #020617;
-      --card: #0f172a;
+      --bg: #0b0f19;
+      --card: #111827;
       --accent: #38bdf8;
+      --accent2: #a855f7;
       --text: #e5e7eb;
       --muted: #9ca3af;
     }
@@ -18,27 +23,11 @@
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top, #0f172a, #020617);
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617);
       color: var(--text);
-      line-height: 1.6;
+      overflow-x: hidden;
     }
-
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    h1, h2, h3 { margin-bottom: 15px; }
-
-    h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 50px;
-    }
-
-    p { color: var(--muted); }
 
     /* ===== HERO ===== */
     .hero {
@@ -52,32 +41,65 @@
 
     .hero h1 {
       font-size: clamp(2.5rem, 5vw, 4rem);
-      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: glow 3s ease-in-out infinite alternate;
     }
 
     .hero p {
       max-width: 700px;
       margin: 20px auto;
       font-size: 1.1rem;
+      color: var(--muted);
     }
 
-    /* ===== ABOUT / EDUCATION / EXPERIENCE ===== */
-    .content {
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .experience h3 {
+    .hero .cta {
       margin-top: 30px;
     }
 
-    ul {
-      margin-left: 20px;
+    .hero a {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 40px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #020617;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 0 40px rgba(56,189,248,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* ===== PROJECTS ===== */
+    .hero a:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 0 60px rgba(168,85,247,0.6);
+    }
+
+    /* ===== SECTION ===== */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      display: block;
+      margin: 15px auto 0;
+      border-radius: 10px;
+    }
+
+    /* ===== PROJECT GRID ===== */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -85,57 +107,43 @@
     }
 
     .card {
-      background: linear-gradient(180deg, #0f172a, #020617);
+      background: linear-gradient(180deg, #111827, #020617);
       border-radius: 20px;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-      cursor: pointer;
-
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      transform-style: preserve-3d;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    .card.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .card:hover {
+      transform: rotateY(6deg) rotateX(4deg) translateY(-10px);
+      box-shadow: 0 40px 80px rgba(56,189,248,0.25);
     }
 
-    .kpi {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: rgba(0,0,0,0.6);
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-size: 0.75rem;
-      text-align: center;
-      animation: pulse 2s infinite;
-      z-index: 2;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    .project img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: contain;
-      background: #020617;
-      padding: 14px;
-      transition: transform 0.4s ease;
-    }
-
-    .project:hover img {
-      transform: scale(1.08);
+    .project-img {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      letter-spacing: 0.5px;
     }
 
     .card-content {
       padding: 20px;
+    }
+
+    .card-content h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      color: var(--muted);
     }
 
     .tag {
@@ -148,199 +156,337 @@
       color: var(--accent);
     }
 
-    /* ===== MODAL ===== */
-    .img-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(2, 6, 23, 0.75);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .img-modal img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 18px;
-      transform: scale(0.85);
-      opacity: 0;
-      transition: all 0.4s ease;
-    }
-
-    .img-modal.show img {
-      transform: scale(1);
-      opacity: 1;
-    }
-
-    .img-close {
+    /* ===== FLOATING BLOBS ===== */
+    .blob {
       position: absolute;
-      top: 25px;
-      right: 35px;
-      font-size: 2.5rem;
-      cursor: pointer;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      animation: float 12s infinite alternate;
     }
 
-    /* ===== CONTACT ===== */
-    .contact a {
-      color: var(--text);
-      text-decoration: none;
+    .blob.one {
+      width: 300px;
+      height: 300px;
+      background: var(--accent);
+      top: -100px;
+      left: -100px;
     }
 
-    .contact a:hover {
-      color: var(--accent);
+    .blob.two {
+      width: 400px;
+      height: 400px;
+      background: var(--accent2);
+      bottom: -150px;
+      right: -150px;
+      animation-delay: 4s;
     }
 
     footer {
       text-align: center;
-      padding: 30px;
+      padding: 40px 20px;
       color: var(--muted);
       font-size: 0.9rem;
     }
+
+    /* SOCIAL LINKS */
+    a {
+      color: #e5e7eb;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes glow {
+      from { text-shadow: 0 0 20px rgba(56,189,248,0.4); }
+      to { text-shadow: 0 0 40px rgba(168,85,247,0.8); }
+    }
+
+    @keyframes float {
+      from { transform: translateY(0px); }
+      to { transform: translateY(60px); }
+    }
+
   </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div>
-    <h1>Hamza Mustafa</h1>
-    <p>Data Analyst | Power BI Specialist | Turning data into business insights</p>
-  </div>
-</section>
+  <!-- BACKGROUND BLOBS -->
+  <div class="blob one"></div>
+  <div class="blob two"></div>
 
-<!-- ABOUT -->
-<section>
-  <h2>About Me</h2>
-  <div class="content">
-    <p>
-      I am a Data Analyst transitioning from a strong background in software engineering
-      and information systems. I specialize in SQL, Python, Power BI, and data modeling,
-      with a passion for creating clear, decision-ready dashboards.
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1>Hamza Mustafa</h1>
+      <p>
+        Data Analyst & Aspiring AI Engineer crafting <strong>beautiful Power BI dashboards</strong>,
+        data stories, and business insights that actually move numbers.
+      </p>
+      <div class="cta">
+        <a href="#projects">View Power BI Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ME -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p style="max-width:900px;margin:auto;text-align:center;color:#9ca3af;font-size:1.05rem;">
+      I am a <strong>Data Analyst</strong> transitioning from a strong background in
+      <strong>software engineering and information systems</strong>. I have hands-on experience in
+      <strong>data modeling, SQL, Python, reporting, and business intelligence</strong>, with a proven
+      ability to translate business requirements into clear, data-driven insights. I enjoy
+      building impactful dashboards, analyzing trends, and supporting decision-making through
+      high-quality data solutions.
     </p>
-  </div>
-</section>
+  </section>
 
-<!-- EDUCATION -->
-<section>
-  <h2>Education</h2>
-  <div class="content">
-    <h3>Master of Information Systems</h3>
-    <p>King’s Own Institute, Australia (2023 – 2025)</p>
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2>Education</h2>
+    <div style="max-width:900px;margin:auto;">
+      <div style="margin-bottom:30px;">
+        <h3>Master of Information Systems</h3>
+        <p style="color:#9ca3af; margin-top:5px;">King’s Own Institute, Australia | 2023 – 2025</p>
+      </div>
+      <div>
+        <h3>Bachelor of Software Engineering</h3>
+        <p style="color:#9ca3af; margin-top:5px;">University of Karachi, Pakistan | 2014 – 2018</p>
+      </div>
+    </div>
+  </section>
 
-    <h3>Bachelor of Software Engineering</h3>
-    <p>University of Karachi, Pakistan (2014 – 2018)</p>
-  </div>
-</section>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2>Professional Experience</h2>
+    <div style="max-width:1000px;margin:auto;">
 
-<!-- EXPERIENCE -->
-<section class="experience">
-  <h2>Professional Experience</h2>
-  <div class="content">
-    <h3>IT Assistant — Unity Grammar (Australia)</h3>
-    <ul>
-      <li>Maintained structured databases and inventory systems</li>
-      <li>Generated reports for administrative decision-making</li>
-    </ul>
+      <h3>IT Assistant — Unity Grammar (Australia)</h3>
+      <p style="color:#9ca3af;">September 2023</p>
+      <ul>
+        <li>Created and maintained structured databases for student assets and inventory.</li>
+        <li>Generated analytical reports to support administrative decision-making.</li>
+      </ul>
 
-    <h3>Senior Software Engineer — Techlogix</h3>
-    <ul>
-      <li>Worked with relational databases and data-driven features</li>
-      <li>Improved reporting accuracy through optimized data handling</li>
-    </ul>
-  </div>
-</section>
+      <h3>Senior Software Engineer — Techlogix (Pakistan)</h3>
+      <p style="color:#9ca3af;">April 2021 – July 2023</p>
+      <ul>
+        <li>Supported data-driven features by working with backend systems and relational databases.</li>
+        <li>Performed data modeling and structured data handling to enable reporting requirements.</li>
+        <li>Improved data reliability through optimized data processing workflows.</li>
+      </ul>
 
-<!-- PROJECTS -->
-<section id="projects">
+      <h3>Analyst Programmer — Centegy Technologies (Pakistan)</h3>
+      <p style="color:#9ca3af;">November 2021 – April 2022</p>
+      <ul>
+        <li>Analyzed application data and workflows to support business and technical requirements.</li>
+        <li>Extracted and structured data from relational databases for reporting and analysis.</li>
+      </ul>
+
+      <h3>Junior iOS Developer — Arpatech (Pakistan)</h3>
+      <p style="color:#9ca3af;">January 2020 – November 2021</p>
+      <ul>
+        <li>Worked on financial and operational applications requiring accurate data handling.</li>
+        <li>Assisted in analyzing system and user data to improve application functionality.</li>
+      </ul>
+
+      <h3>Junior Web Developer — Chase Department Store (Pakistan)</h3>
+      <p style="color:#9ca3af;">December 2017 – November 2019</p>
+      <ul>
+        <li>Developed and maintained an e-commerce platform using Magento.</li>
+        <li>Implemented order tracking systems to streamline logistics and fulfillment processes.</li>
+      </ul>
+
+    </div>
+  </section>
+
+  
+
+  <!-- PROJECTS -->
+  <section id="projects">
   <h2>Power BI Projects</h2>
 
   <div class="grid">
-    <div class="card project">
+
+    <!-- PROJECT 1 -->
+    <div class="card project" data-modal="modal1">
       <div class="kpi">⬆ Revenue<br><strong>+18%</strong></div>
-      <img src="image1.webp">
+      <img src="images/retail-management-dashboard.webp" alt="Retail Supply Chain Sales Dashboard">
       <div class="card-content">
         <h3>Retail Supply Chain & Sales Analysis</h3>
-        <p>Revenue, cost, profit, orders, and delivery performance analysis.</p>
+        <p>Advanced Power BI dashboard analyzing revenue, cost, profit, orders, quantity sold, and delivery performance across regions and subcategories.</p>
         <span class="tag">Power BI</span>
       </div>
     </div>
 
-    <div class="card project">
+    <!-- PROJECT 2 -->
+    <div class="card project" data-modal="modal2">
       <div class="kpi">📦 Orders<br><strong>22K</strong></div>
-      <img src="image2.jpg">
+      <img src="images/superstore-sales-dashboard.png" alt="Super Store Sales Dashboard">
       <div class="card-content">
         <h3>Super Store Sales Dashboard</h3>
-        <p>Region-wise sales, profit trends, and category insights.</p>
+        <p>Comprehensive sales performance dashboard covering region-wise sales, profit trends, ship modes, and category-level insights.</p>
         <span class="tag">Data Analytics</span>
       </div>
     </div>
 
-    <div class="card project">
+    <!-- PROJECT 3 -->
+    <div class="card project" data-modal="modal3">
       <div class="kpi">💰 Profit<br><strong>37K</strong></div>
-      <img src="image3.png">
+      <img src="images/odin-ecommerce-dashboard.jpg" alt="Odin E-commerce Sales Dashboard">
       <div class="card-content">
         <h3>E-commerce Sales & Profit Analysis</h3>
-        <p>Sales, profit by month, payment modes, and customer trends.</p>
+        <p>Interactive Power BI dashboard analyzing e-commerce sales, profit by month, category performance, payment modes, and customer trends.</p>
         <span class="tag">Business Intelligence</span>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact">
-  <h2>Contact Me</h2>
-  <p style="text-align:center;">
-    📧 <a href="mailto:hamza.appdeveloper@gmail.com">hamza.appdeveloper@gmail.com</a><br><br>
-    🔗 <a href="https://www.linkedin.com/in/hamza-mustafa786/">LinkedIn</a> |
-    💻 <a href="https://github.com/Hamza-Mustafa">GitHub</a> |
-    📸 <a href="https://www.instagram.com/appshap">Instagram</a>
-  </p>
-</section>
-
-<footer>
-  © 2026 Hamza Mustafa · Data Analytics · Power BI
-</footer>
-
-<!-- MODAL -->
-<div class="img-modal" id="imgModal">
-  <span class="img-close">&times;</span>
-  <img id="imgModalContent">
+<!-- MODALS -->
+<div class="modal" id="modal1">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <iframe src="https://app.powerbi.com/view?r=EXAMPLE1" allowfullscreen></iframe>
+  </div>
 </div>
 
+<div class="modal" id="modal2">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <iframe src="https://app.powerbi.com/view?r=EXAMPLE2" allowfullscreen></iframe>
+  </div>
+</div>
+
+<div class="modal" id="modal3">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <iframe src="https://app.powerbi.com/view?r=EXAMPLE3" allowfullscreen></iframe>
+  </div>
+</div>
+
+<style>
+/* PROJECT UPGRADES */
+.project img {
+  transition: transform 0.4s ease;
+}
+
+.project:hover img {
+  transform: scale(1.08);
+}
+
+.kpi {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(0,0,0,0.6);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.85);
+  z-index: 999;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  margin: 5% auto;
+  background: #020617;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.modal iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* SCROLL ANIMATION */
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
 <script>
-  /* Scroll animation */
-  const cards = document.querySelectorAll('.card');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
+// SCROLL-IN ANIMATION
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-  cards.forEach(card => observer.observe(card));
+}, { threshold: 0.2 });
 
-  /* Image modal */
-  const modal = document.getElementById("imgModal");
-  const modalImg = document.getElementById("imgModalContent");
-  document.querySelectorAll(".project img").forEach(img => {
-    img.onclick = () => {
-      modal.style.display = "flex";
-      modal.classList.add("show");
-      modalImg.src = img.src;
-    };
+cards.forEach(card => observer.observe(card));
+
+// MODAL LOGIC
+document.querySelectorAll('.project').forEach(card => {
+  card.addEventListener('click', () => {
+    document.getElementById(card.dataset.modal).style.display = 'block';
   });
+});
 
-  document.querySelector(".img-close").onclick = closeModal;
-  modal.onclick = e => { if (e.target === modal) closeModal(); };
-  document.onkeydown = e => { if (e.key === "Escape") closeModal(); };
-
-  function closeModal() {
-    modal.classList.remove("show");
-    setTimeout(() => modal.style.display = "none", 300);
-  }
+document.querySelectorAll('.close').forEach(btn => {
+  btn.onclick = () => btn.closest('.modal').style.display = 'none';
+});
 </script>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p style="text-align:center;color:#9ca3af;font-size:1.05rem;">
+      Interested in collaborating, hiring, or discussing data analytics opportunities?
+    </p>
+    <p style="text-align:center;font-size:1.1rem;">
+      📧 <a href="mailto:hamza.appdeveloper@gmail.com">hamza.appdeveloper@gmail.com</a>
+    </p>
+    <p style="text-align:center;">
+      🔗 <a href="https://www.linkedin.com/in/hamza-mustafa786/" target="_blank">LinkedIn</a> |
+      💻 <a href="https://github.com/Hamza-Mustafa" target="_blank">GitHub</a> |
+      📸 <a href="https://www.instagram.com/appshap" target="_blank">Instagram</a>
+    </p>
+  </section>
+
+  <footer>
+    © 2026 Hamza Mustafa · Power BI · Data Analytics · GitHub Pages
+  </footer>
 
 </body>
 </html>
