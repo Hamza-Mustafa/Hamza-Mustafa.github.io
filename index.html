@@ -308,40 +308,49 @@
   
 
   <!-- PROJECTS -->
-  <section id="projects">
+<section id="projects">
   <h2>Power BI Projects</h2>
 
   <div class="grid">
 
     <!-- PROJECT 1 -->
-    <div class="card project" data-modal="modal1">
+    <div class="card project">
       <div class="kpi">⬆ Revenue<br><strong>+18%</strong></div>
-      <img src="images/retail-management-dashboard.webp" alt="Retail Supply Chain Sales Dashboard">
+      <img src="image1.webp" alt="Retail Supply Chain Sales Dashboard">
       <div class="card-content">
         <h3>Retail Supply Chain & Sales Analysis</h3>
-        <p>Advanced Power BI dashboard analyzing revenue, cost, profit, orders, quantity sold, and delivery performance across regions and subcategories.</p>
+        <p>
+          Advanced Power BI dashboard analyzing revenue, cost, profit, orders,
+          quantity sold, and delivery performance across regions and subcategories.
+        </p>
         <span class="tag">Power BI</span>
       </div>
     </div>
 
     <!-- PROJECT 2 -->
-    <div class="card project" data-modal="modal2">
+    <div class="card project">
       <div class="kpi">📦 Orders<br><strong>22K</strong></div>
-      <img src="images/superstore-sales-dashboard.png" alt="Super Store Sales Dashboard">
+      <img src="image2.jpg" alt="Super Store Sales Dashboard">
       <div class="card-content">
         <h3>Super Store Sales Dashboard</h3>
-        <p>Comprehensive sales performance dashboard covering region-wise sales, profit trends, ship modes, and category-level insights.</p>
+        <p>
+          Comprehensive sales performance dashboard covering region-wise sales,
+          profit trends, ship modes, and category-level insights.
+        </p>
         <span class="tag">Data Analytics</span>
       </div>
     </div>
 
     <!-- PROJECT 3 -->
-    <div class="card project" data-modal="modal3">
+    <div class="card project">
       <div class="kpi">💰 Profit<br><strong>37K</strong></div>
-      <img src="images/odin-ecommerce-dashboard.jpg" alt="Odin E-commerce Sales Dashboard">
+      <img src="image3.png" alt="Odin E-commerce Sales Dashboard">
       <div class="card-content">
         <h3>E-commerce Sales & Profit Analysis</h3>
-        <p>Interactive Power BI dashboard analyzing e-commerce sales, profit by month, category performance, payment modes, and customer trends.</p>
+        <p>
+          Interactive Power BI dashboard analyzing e-commerce sales, profit by month,
+          category performance, payment modes, and customer trends.
+        </p>
         <span class="tag">Business Intelligence</span>
       </div>
     </div>
@@ -349,101 +358,210 @@
   </div>
 </section>
 
-<!-- MODALS -->
-<div class="modal" id="modal1">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <iframe src="https://app.powerbi.com/view?r=EXAMPLE1" allowfullscreen></iframe>
-  </div>
+<!-- IMAGE MODAL -->
+<div class="img-modal" id="imgModal">
+  <span class="img-close">&times;</span>
+  <img id="imgModalContent">
 </div>
 
-<div class="modal" id="modal2">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <iframe src="https://app.powerbi.com/view?r=EXAMPLE2" allowfullscreen></iframe>
-  </div>
-</div>
+<script>
+  /* Scroll-in animation */
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.2 });
 
-<div class="modal" id="modal3">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <iframe src="https://app.powerbi.com/view?r=EXAMPLE3" allowfullscreen></iframe>
-  </div>
-</div>
+  cards.forEach(card => observer.observe(card));
 
-<style>
-/* PROJECT UPGRADES */
-.project img {
-  transition: transform 0.4s ease;
-}
+  /* Image modal logic */
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("imgModalContent");
+  const closeBtn = document.querySelector(".img-close");
 
-.project:hover img {
-  transform: scale(1.08);
-}
+  document.querySelectorAll(".project img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modal.classList.add("show");
+      modalImg.src = img.src;
+    });
+  });
 
-.kpi {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background: rgba(0,0,0,0.6);
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  text-align: center;
-  animation: pulse 2s infinite;
-}
+  closeBtn.onclick = closeModal;
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
 
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(2,6,23,0.85);
-  z-index: 999;
-}
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
 
-.modal-content {
-  position: relative;
-  width: 90%;
-  max-width: 1100px;
-  margin: 5% auto;
-  background: #020617;
-  border-radius: 20px;
-  overflow: hidden;
-}
+  function closeModal() {
+    modal.classList.remove("show");
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 300);
+  }
+</script>
 
-.modal iframe {
-  width: 100%;
-  height: 600px;
-  border: none;
-}
 
-.close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 2rem;
-  cursor: pointer;
-}
+  
+  <style>
+    :root {
+      --bg: #020617;
+      --card: #0f172a;
+      --accent: #38bdf8;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
 
-/* SCROLL ANIMATION */
-.card {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: var(--text);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+    }
+
+    /* ===== PROJECTS ===== */
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #0f172a, #020617);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      cursor: pointer;
+
+      /* scroll animation */
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* KPI badge */
+    .kpi {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(0,0,0,0.6);
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 0.75rem;
+      text-align: center;
+      animation: pulse 2s infinite;
+      z-index: 2;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* ===== IMAGE FIX ===== */
+    .project img {
+      width: 100%;
+      aspect-ratio: 1 / 1;       /* square */
+      object-fit: contain;       /* full image visible */
+      background: #020617;
+      padding: 14px;
+      transition: transform 0.4s ease;
+    }
+
+    .project:hover img {
+      transform: scale(1.08);
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      margin: 0 0 10px;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      background: rgba(56,189,248,0.15);
+      color: var(--accent);
+    }
+
+    /* ===== IMAGE MODAL ===== */
+    .img-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 18px;
+      transform: scale(0.85);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .img-modal.show img {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .img-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-size: 2.5rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+  </style>
+
+
+
 
 <script>
 // SCROLL-IN ANIMATION
@@ -490,3 +608,4 @@ document.querySelectorAll('.close').forEach(btn => {
 
 </body>
 </html>
+
