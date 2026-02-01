@@ -918,7 +918,7 @@
 }
 
 
-    /* THEME SWITCH TOGGLE */
+ /* THEME SWITCH TOGGLE */
 .theme-switch-wrapper {
   display: flex;
   align-items: center;
@@ -964,6 +964,7 @@
   transition: 0.4s;
 }
 
+/* Dark mode ON */
 input:checked + .slider {
   background: linear-gradient(90deg, var(--accent), var(--accent2));
 }
@@ -972,15 +973,16 @@ input:checked + .slider::before {
   transform: translateX(24px);
 }
 
-/* Optional hover effect */
+/* Hover effect */
 .slider:hover {
   box-shadow: 0 0 8px rgba(255,255,255,0.4);
 }
 
-/* Switch label */
+/* Label */
 .switch-label {
   font-size: 0.9rem;
   user-select: none;
+  color: var(--text);
 }
     
   </style>
@@ -1487,15 +1489,33 @@ const skillObserver = new IntersectionObserver(entries => {
 skillCards.forEach(card => skillObserver.observe(card));
 
 
-    const themeCheckbox = document.getElementById("themeToggleCheckbox");
+const themeCheckbox = document.getElementById("themeToggleCheckbox");
+// Function to set initial state based on current page mode
+function initThemeToggle() {
+  const isDarkMode = !document.body.classList.contains("light-mode");
+  themeCheckbox.checked = isDarkMode; // checked = dark mode ON
+}
+
+// Toggle theme on change
 themeCheckbox.addEventListener("change", () => {
-  document.body.classList.toggle("light-mode", !themeCheckbox.checked);
+  if (themeCheckbox.checked) {
+    // Dark mode ON
+    document.body.classList.remove("light-mode");
+  } else {
+    // Light mode ON
+    document.body.classList.add("light-mode");
+  }
 });
+
+// Initialize on page load
+initThemeToggle();
+
     
   </script>
 
 </body>
 </html>
+
 
 
 
