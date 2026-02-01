@@ -728,23 +728,26 @@
     
    
 
+/* IMPROVED EXPERIENCE SECTION */
 .experience-wrapper {
   max-width: 900px;
   margin: auto;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .exp-item {
   background: rgba(15,23,42,0.6);
-  padding: 25px 30px;
-  margin: 40px 0;
-  border-radius: 16px;
+  padding: 30px 25px;
+  border-radius: 20px;
   backdrop-filter: blur(6px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   transform: translateY(40px);
-  transition: all 0.7s ease;
 }
 
 .exp-item.visible {
@@ -752,10 +755,49 @@
   transform: translateY(0);
 }
 
+.exp-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+  border-radius: 3px;
+}
+
+.exp-item h3 {
+  margin: 0 0 10px 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 .exp-date {
-  color: var(--muted);
-  margin-top: -8px;
+  margin-left: 10px;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
   margin-bottom: 12px;
+}
+
+.exp-item p {
+  margin-left: 10px;
+  line-height: 1.5;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+/* Hover effect */
+.exp-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px rgba(56,189,248,0.25);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .exp-item {
+    padding: 25px 20px;
+  }
 }
 
 
@@ -1027,47 +1069,31 @@
     <div class="exp-item">
       <h3>IT Assistant — Unity Grammar (Australia)</h3>
       <p class="exp-date">September 2023</p>
-      <ul>
-        <li>Created and maintained structured databases for student assets and inventory.</li>
-        <li>Generated analytical reports to support administrative decision-making.</li>
-      </ul>
+      <p>Created and maintained structured databases for student assets and inventory. Generated analytical reports to support administrative decision-making.</p>
     </div>
 
     <div class="exp-item">
       <h3>Senior Software Engineer — Techlogix (Pakistan)</h3>
       <p class="exp-date">April 2021 – July 2023</p>
-      <ul>
-        <li>Supported data-driven features by working with backend systems and relational databases.</li>
-        <li>Performed data modeling and structured data handling to enable reporting requirements.</li>
-        <li>Improved data reliability through optimized data processing workflows.</li>
-      </ul>
+      <p>Supported data-driven features by working with backend systems and relational databases. Performed data modeling and structured data handling to enable reporting requirements. Improved data reliability through optimized data processing workflows.</p>
     </div>
 
     <div class="exp-item">
       <h3>Analyst Programmer — Centegy Technologies (Pakistan)</h3>
       <p class="exp-date">November 2021 – April 2022</p>
-      <ul>
-        <li>Analyzed application data and workflows to support business and technical requirements.</li>
-        <li>Extracted and structured data from relational databases for reporting and analysis.</li>
-      </ul>
+      <p>Analyzed application data and workflows to support business and technical requirements. Extracted and structured data from relational databases for reporting and analysis.</p>
     </div>
 
     <div class="exp-item">
       <h3>Junior iOS Developer — Arpatech (Pakistan)</h3>
       <p class="exp-date">January 2020 – November 2021</p>
-      <ul>
-        <li>Worked on financial and operational applications requiring accurate data handling.</li>
-        <li>Assisted in analyzing system and user data to improve application functionality.</li>
-      </ul>
+      <p>Worked on financial and operational applications requiring accurate data handling. Assisted in analyzing system and user data to improve application functionality.</p>
     </div>
 
     <div class="exp-item">
       <h3>Junior Web Developer — Chase Department Store (Pakistan)</h3>
       <p class="exp-date">December 2017 – November 2019</p>
-      <ul>
-        <li>Developed and maintained an e-commerce platform using Magento.</li>
-        <li>Implemented order tracking systems to streamline logistics and fulfillment processes.</li>
-      </ul>
+      <p>Developed and maintained an e-commerce platform using Magento. Implemented order tracking systems to streamline logistics and fulfillment processes.</p>
     </div>
 
   </div>
@@ -1391,6 +1417,7 @@ skillCards.forEach(card => skillObserver.observe(card));
 
 </body>
 </html>
+
 
 
 
