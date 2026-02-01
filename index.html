@@ -22,7 +22,22 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+  <!-- FIXES ADDED HERE -->
+  <style>
+    /* FIX 1 — Light Mode: Make Education, Skills, Experience backgrounds white instead of grey */
+    body.light-mode .exp-item,
+    body.light-mode .edu-badge,
+    body.light-mode .skill-card {
+      background: #ffffff !important;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+      border: 1px solid rgba(0,0,0,0.06) !important;
+    }
 
+    /* FIX 2 — Light Mode: Hero button text stays white */
+    body.light-mode .hero a {
+      color: #ffffff !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -44,15 +59,17 @@
       <a href="#experience" data-link="experience">Experience</a>
       <a href="#projects" data-link="projects">Projects</a>
       <a href="#contact" data-link="contact">Contact</a>
+
       <!-- Theme Toggle -->
-<div class="theme-switch-wrapper">
-  <label class="theme-switch" for="themeToggleCheckbox">
-    <input type="checkbox" id="themeToggleCheckbox">
-    <span class="slider"></span>
-  </label>
-  <span class="switch-label">Dark Mode</span>
-</div>
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="themeToggleCheckbox">
+          <input type="checkbox" id="themeToggleCheckbox">
+          <span class="slider"></span>
+        </label>
+        <span class="switch-label">Dark Mode</span>
+      </div>
     </div>
+
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
@@ -99,116 +116,113 @@
   </section>
 
   <!-- EDUCATION -->
-<section id="education">
-  <h2>Education</h2>
+  <section id="education">
+    <h2>Education</h2>
 
-  <div class="edu-badges">
+    <div class="edu-badges">
 
-    <div class="edu-badge">
-      <!-- <div class="edu-icon">🎓  </div> -->
-      <h3>Master of Information Systems</h3>
-      <p class="edu-school">King’s Own Institute, Australia</p>
-      <p class="edu-date">2023 – 2025</p>
+      <div class="edu-badge">
+        <h3>Master of Information Systems</h3>
+        <p class="edu-school">King’s Own Institute, Australia</p>
+        <p class="edu-date">2023 – 2025</p>
+      </div>
+
+      <div class="edu-badge">
+        <h3>Bachelor of Software Engineering</h3>
+        <p class="edu-school">University of Karachi, Pakistan</p>
+        <p class="edu-date">2014 – 2018</p>
+      </div>
+
     </div>
+  </section>
 
-    <div class="edu-badge">
-      <!-- <div class="edu-icon">📘  </div> -->
-      <h3>Bachelor of Software Engineering</h3>
-      <p class="edu-school">University of Karachi, Pakistan</p>
-      <p class="edu-date">2014 – 2018</p>
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Skills & Tools</h2>
+
+    <div class="skills-wrapper grid">
+
+      <div class="skill-card">
+        <img src="images/icons/sql.png" alt="SQL Logo">
+        <p>SQL</p>
+      </div>
+
+      <div class="skill-card">
+        <img src="images/icons/python.png" alt="Python Logo">
+        <p>Python</p>
+      </div>
+
+      <div class="skill-card">
+        <img src="images/icons/excel.png" alt="Excel Logo">
+        <p>Microsoft Excel</p>
+      </div>
+
+      <div class="skill-card">
+        <img src="images/icons/powerbi.png" alt="Power BI Logo">
+        <p>Power BI</p>
+      </div>
+
+      <div class="skill-card">
+        <img src="images/icons/tableau.png" alt="Tableau Logo">
+        <p>Tableau</p>
+      </div>
+
+      <div class="skill-card">
+        <img src="images/icons/jupyter.png" alt="Data Modeling Logo">
+        <p>Data Modeling & ER Diagrams</p>
+      </div>
+
+      <div class="skill-card">
+        <img src="images/icons/statistics.png" alt="Statistics Logo">
+        <p>Statistics & Data Analysis</p>
+      </div>
+
+      <div class="skill-card">
+        <img src="images/icons/data-cleaning.png" alt="Data Cleaning Logo">
+        <p>Data Cleaning & Transformation</p>
+      </div>
+
     </div>
-
-  </div>
-</section>
-
-
-<!-- SKILLS -->
-<section id="skills">
-  <h2>Skills & Tools</h2>
-
-  <div class="skills-wrapper grid">
-
-    <div class="skill-card">
-      <img src="images/icons/sql.png" alt="SQL Logo">
-      <p>SQL</p>
-    </div>
-
-    <div class="skill-card">
-      <img src="images/icons/python.png" alt="Python Logo">
-      <p>Python</p>
-    </div>
-
-    <div class="skill-card">
-      <img src="images/icons/excel.png" alt="Excel Logo">
-      <p>Microsoft Excel</p>
-    </div>
-
-    <div class="skill-card">
-      <img src="images/icons/powerbi.png" alt="Power BI Logo">
-      <p>Power BI</p>
-    </div>
-
-    <div class="skill-card">
-      <img src="images/icons/tableau.png" alt="Tableau Logo">
-      <p>Tableau</p>
-    </div>
-
-    <div class="skill-card">
-      <img src="images/icons/jupyter.png" alt="Data Modeling Logo">
-      <p>Data Modeling & ER Diagrams</p>
-    </div>
-
-    <div class="skill-card">
-      <img src="images/icons/statistics.png" alt="Statistics Logo">
-      <p>Statistics & Data Analysis</p>
-    </div>
-
-    <div class="skill-card">
-      <img src="images/icons/data-cleaning.png" alt="Data Cleaning Logo">
-      <p>Data Cleaning & Transformation</p>
-    </div>
-
-  </div>
-</section>
+  </section>
 
   <!-- EXPERIENCE -->
-<section id="experience">
-  <h2>Professional Experience</h2>
+  <section id="experience">
+    <h2>Professional Experience</h2>
 
-  <div class="experience-wrapper">
+    <div class="experience-wrapper">
 
-    <div class="exp-item">
-      <h3>IT Assistant — Unity Grammar (Australia)</h3>
-      <p class="exp-date">September 2023</p>
-      <p>Created and maintained structured databases for student assets and inventory. Generated analytical reports to support administrative decision-making.</p>
+      <div class="exp-item">
+        <h3>IT Assistant — Unity Grammar (Australia)</h3>
+        <p class="exp-date">September 2023</p>
+        <p>Created and maintained structured databases for student assets and inventory. Generated analytical reports to support administrative decision-making.</p>
+      </div>
+
+      <div class="exp-item">
+        <h3>Senior Software Engineer — Techlogix (Pakistan)</h3>
+        <p class="exp-date">April 2021 – July 2023</p>
+        <p>Supported data-driven features by working with backend systems and relational databases. Performed data modeling and structured data handling to enable reporting requirements. Improved data reliability through optimized data processing workflows.</p>
+      </div>
+
+      <div class="exp-item">
+        <h3>Analyst Programmer — Centegy Technologies (Pakistan)</h3>
+        <p class="exp-date">November 2021 – April 2022</p>
+        <p>Analyzed application data and workflows to support business and technical requirements. Extracted and structured data from relational databases for reporting and analysis.</p>
+      </div>
+
+      <div class="exp-item">
+        <h3>Junior iOS Developer — Arpatech (Pakistan)</h3>
+        <p class="exp-date">January 2020 – November 2021</p>
+        <p>Worked on financial and operational applications requiring accurate data handling. Assisted in analyzing system and user data to improve application functionality.</p>
+      </div>
+
+      <div class="exp-item">
+        <h3>Junior Web Developer — Chase Department Store (Pakistan)</h3>
+        <p class="exp-date">December 2017 – November 2019</p>
+        <p>Developed and maintained an e-commerce platform using Magento. Implemented order tracking systems to streamline logistics and fulfillment processes.</p>
+      </div>
+
     </div>
-
-    <div class="exp-item">
-      <h3>Senior Software Engineer — Techlogix (Pakistan)</h3>
-      <p class="exp-date">April 2021 – July 2023</p>
-      <p>Supported data-driven features by working with backend systems and relational databases. Performed data modeling and structured data handling to enable reporting requirements. Improved data reliability through optimized data processing workflows.</p>
-    </div>
-
-    <div class="exp-item">
-      <h3>Analyst Programmer — Centegy Technologies (Pakistan)</h3>
-      <p class="exp-date">November 2021 – April 2022</p>
-      <p>Analyzed application data and workflows to support business and technical requirements. Extracted and structured data from relational databases for reporting and analysis.</p>
-    </div>
-
-    <div class="exp-item">
-      <h3>Junior iOS Developer — Arpatech (Pakistan)</h3>
-      <p class="exp-date">January 2020 – November 2021</p>
-      <p>Worked on financial and operational applications requiring accurate data handling. Assisted in analyzing system and user data to improve application functionality.</p>
-    </div>
-
-    <div class="exp-item">
-      <h3>Junior Web Developer — Chase Department Store (Pakistan)</h3>
-      <p class="exp-date">December 2017 – November 2019</p>
-      <p>Developed and maintained an e-commerce platform using Magento. Implemented order tracking systems to streamline logistics and fulfillment processes.</p>
-    </div>
-
-  </div>
-</section>
+  </section>
 
   <!-- PROJECTS -->
   <section id="projects">
@@ -298,13 +312,13 @@
     </p>
   </section>
 
-<footer class="premium-footer">
-  <div class="footer-accent-line"></div>
+  <footer class="premium-footer">
+    <div class="footer-accent-line"></div>
 
-  <div class="footer-content">
-    <p class="footer-copy">© 2026 Hamza Mustafa • All Rights Reserved</p>
-  </div>
-</footer>
+    <div class="footer-content">
+      <p class="footer-copy">© 2026 Hamza Mustafa • All Rights Reserved</p>
+    </div>
+  </footer>
 
   <!-- SCROLL TO TOP -->
   <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
@@ -314,29 +328,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
