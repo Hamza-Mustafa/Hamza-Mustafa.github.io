@@ -818,6 +818,49 @@
     max-width: 100%;
   }
 }
+
+    /* SKILLS SECTION */
+.skills-wrapper {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.skill-card {
+  background: rgba(15,23,42,0.6);
+  padding: 25px 20px;
+  border-radius: 18px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--text);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s ease;
+  cursor: default;
+}
+
+.skill-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-card:hover {
+  box-shadow: 0 0 25px rgba(56,189,248,0.35);
+  transform: translateY(-4px);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .skills-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+  }
+}
     
   </style>
 </head>
@@ -908,6 +951,23 @@
       <p class="edu-date">2014 – 2018</p>
     </div>
 
+  </div>
+</section>
+
+
+  <!-- SKILLS -->
+<section id="skills">
+  <h2>Skills & Expertise</h2>
+
+  <div class="skills-wrapper grid">
+    <div class="skill-card">Data Analysis & Reporting</div>
+    <div class="skill-card">SQL (Queries, Joins, Aggregations)</div>
+    <div class="skill-card">Advanced Microsoft Excel (Pivot Tables, VLOOKUP/XLOOKUP)</div>
+    <div class="skill-card">Python (Pandas, NumPy)</div>
+    <div class="skill-card">Data Modeling & ER Diagrams</div>
+    <div class="skill-card">Data Visualization (Power BI, Tableau)</div>
+    <div class="skill-card">Requirements Gathering & Documentation</div>
+    <div class="skill-card">Problem Solving & Critical Thinking</div>
   </div>
 </section>
 
@@ -1268,11 +1328,22 @@ const eduBadgeObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.3 });
 eduBadges.forEach(badge => eduBadgeObserver.observe(badge));
+
+
+// Animate skill cards on scroll
+const skillCards = document.querySelectorAll('.skill-card');
+const skillObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.3 });
+skillCards.forEach(card => skillObserver.observe(card));
     
   </script>
 
 </body>
 </html>
+
 
 
 
