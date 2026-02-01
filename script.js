@@ -235,3 +235,18 @@ themeCheckbox.addEventListener("change", () => {
 initThemeToggle();
 
     
+function triggerSparkAnimation() {
+  const toggle = document.querySelector(".theme-switch");
+  if (!toggle) return;
+
+  const spark = document.createElement("div");
+  spark.classList.add("spark-burst");
+
+  toggle.appendChild(spark);
+
+  setTimeout(() => spark.remove(), 500);
+}
+
+themeCheckbox.addEventListener("change", () => {
+  triggerSparkAnimation();
+});
