@@ -250,3 +250,22 @@ function triggerSparkAnimation() {
 themeCheckbox.addEventListener("change", () => {
   triggerSparkAnimation();
 });
+
+
+// Floating Data Icons — Subtle & Classy
+const floatIcons = document.querySelectorAll(".float-icon");
+
+floatIcons.forEach((icon, index) => {
+  // Random starting position
+  icon.style.top = Math.random() * 80 + "%";
+  icon.style.left = Math.random() * 80 + "%";
+
+  // Random animation duration for natural movement
+  const duration = 10 + Math.random() * 10;
+  icon.style.animationDuration = duration + "s";
+
+  // Slight stagger so they don't move in sync
+  icon.style.animationDelay = (index * 1.5) + "s";
+});
+
+icon.style.width = (40 + Math.random() * 30) + "px";

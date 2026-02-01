@@ -1005,3 +1005,53 @@ body.light-mode .theme-switch .slider::before {
     opacity: 0;
   }
 }
+
+
+.floating-icons {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1; /* Behind hero text, above canvas */
+}
+
+.float-icon {
+  position: absolute;
+  width: 55px;
+  opacity: 0.12;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+  animation: floatAnim 12s ease-in-out infinite;
+}
+
+/* Smooth floating motion */
+@keyframes floatAnim {
+  0% { transform: translateY(0px) translateX(0px) scale(1); }
+  50% { transform: translateY(-25px) translateX(15px) scale(1.05); }
+  100% { transform: translateY(0px) translateX(0px) scale(1); }
+}
+
+.float-icon {
+  position: absolute;
+  width: 55px;
+  opacity: 0.12;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+  animation: floatAnim 12s ease-in-out infinite, rotateAnim 18s linear infinite;
+}
+
+@keyframes rotateAnim {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(4deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.float-icon {
+  opacity: 0;
+  animation: floatAnim 12s ease-in-out infinite, fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.12; }
+}
