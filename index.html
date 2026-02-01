@@ -916,6 +916,72 @@
     height: 40px;
   }
 }
+
+
+    /* THEME SWITCH TOGGLE */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255,255,255,0.25);
+  border-radius: 26px;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+/* Optional hover effect */
+.slider:hover {
+  box-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
+
+/* Switch label */
+.switch-label {
+  font-size: 0.9rem;
+  user-select: none;
+}
     
   </style>
 </head>
@@ -939,7 +1005,14 @@
       <a href="#experience" data-link="experience">Experience</a>
       <a href="#projects" data-link="projects">Projects</a>
       <a href="#contact" data-link="contact">Contact</a>
-      <button id="themeToggle">🌙</button>
+      <!-- Theme Toggle -->
+<div class="theme-switch-wrapper">
+  <label class="theme-switch" for="themeToggleCheckbox">
+    <input type="checkbox" id="themeToggleCheckbox">
+    <span class="slider"></span>
+  </label>
+  <span class="switch-label">Dark Mode</span>
+</div>
     </div>
     <div class="hamburger" id="hamburger">
       <span></span>
@@ -1412,11 +1485,18 @@ const skillObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.3 });
 
 skillCards.forEach(card => skillObserver.observe(card));
+
+
+    const themeCheckbox = document.getElementById("themeToggleCheckbox");
+themeCheckbox.addEventListener("change", () => {
+  document.body.classList.toggle("light-mode", !themeCheckbox.checked);
+});
     
   </script>
 
 </body>
 </html>
+
 
 
 
