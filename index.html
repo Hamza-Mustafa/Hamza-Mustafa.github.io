@@ -819,13 +819,14 @@
   }
 }
 
-    /* SKILLS SECTION */
+ /* SKILLS SECTION */
 .skills-wrapper {
   max-width: 1000px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  align-items: stretch;
 }
 
 .skill-card {
@@ -840,8 +841,7 @@
   box-shadow: 0 12px 30px rgba(0,0,0,0.4);
   opacity: 0;
   transform: translateY(40px);
-  transition: all 0.7s ease;
-  cursor: default;
+  transition: all 0.7s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-card.visible {
@@ -849,16 +849,29 @@
   transform: translateY(0);
 }
 
+.skill-card img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 5px rgba(56,189,248,0.6));
+}
+
 .skill-card:hover {
-  box-shadow: 0 0 25px rgba(56,189,248,0.35);
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 0 30px rgba(56,189,248,0.5);
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .skills-wrapper {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 16px;
+  }
+
+  .skill-card img {
+    width: 40px;
+    height: 40px;
   }
 }
     
@@ -955,19 +968,53 @@
 </section>
 
 
-  <!-- SKILLS -->
+
+<!-- SKILLS -->
 <section id="skills">
-  <h2>Skills & Expertise</h2>
+  <h2>Skills & Tools</h2>
 
   <div class="skills-wrapper grid">
-    <div class="skill-card">Data Analysis & Reporting</div>
-    <div class="skill-card">SQL (Queries, Joins, Aggregations)</div>
-    <div class="skill-card">Advanced Microsoft Excel (Pivot Tables, VLOOKUP/XLOOKUP)</div>
-    <div class="skill-card">Python (Pandas, NumPy)</div>
-    <div class="skill-card">Data Modeling & ER Diagrams</div>
-    <div class="skill-card">Data Visualization (Power BI, Tableau)</div>
-    <div class="skill-card">Requirements Gathering & Documentation</div>
-    <div class="skill-card">Problem Solving & Critical Thinking</div>
+
+    <div class="skill-card">
+      <img src="icons/sql.png" alt="SQL Logo">
+      <p>SQL (Queries, Joins, Aggregations)</p>
+    </div>
+
+    <div class="skill-card">
+      <img src="icons/python.png" alt="Python Logo">
+      <p>Python (Pandas, NumPy)</p>
+    </div>
+
+    <div class="skill-card">
+      <img src="icons/excel.png" alt="Excel Logo">
+      <p>Microsoft Excel (Pivot Tables, VLOOKUP/XLOOKUP)</p>
+    </div>
+
+    <div class="skill-card">
+      <img src="icons/powerbi.png" alt="Power BI Logo">
+      <p>Power BI</p>
+    </div>
+
+    <div class="skill-card">
+      <img src="icons/tableau.png" alt="Tableau Logo">
+      <p>Tableau</p>
+    </div>
+
+    <div class="skill-card">
+      <img src="icons/data-modeling.png" alt="Data Modeling Logo">
+      <p>Data Modeling & ER Diagrams</p>
+    </div>
+
+    <div class="skill-card">
+      <img src="icons/statistics.png" alt="Statistics Logo">
+      <p>Statistics & Data Analysis</p>
+    </div>
+
+    <div class="skill-card">
+      <img src="icons/data-cleaning.png" alt="Data Cleaning Logo">
+      <p>Data Cleaning & Transformation</p>
+    </div>
+
   </div>
 </section>
 
@@ -1337,12 +1384,14 @@ const skillObserver = new IntersectionObserver(entries => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.3 });
+
 skillCards.forEach(card => skillObserver.observe(card));
     
   </script>
 
 </body>
 </html>
+
 
 
 
